@@ -139,10 +139,10 @@ void TimerRun()
 	if(timer9_counter > 0)
 	{
 		timer9_counter --;
-		if(timer9_counter <= 0)
-		{
-			timer9_flag=1;
-		}
+		// if(timer9_counter <= 0)
+		// {
+		// 	timer9_flag=1;
+		// }
 	}
 }
 
