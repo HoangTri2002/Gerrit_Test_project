@@ -39,7 +39,7 @@ void fsm_tunning_mode()
               {
             	  ToggleLEDRed(0);
             	  ToggleLEDRed(1);
-            	  setTimer7(500); //0.5s
+            	  setTimer7(600); //0.5s  increase timer
             	  setTimer8(1000);//1s
               }
               if(timer7_flag==1)
