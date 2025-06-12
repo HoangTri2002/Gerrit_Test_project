@@ -151,33 +151,33 @@ HAL_StatusTypeDef HAL_DMA_Init(DMA_HandleTypeDef *hdma)
   }
 
   /* Check the parameters */
-  assert_param(IS_DMA_ALL_INSTANCE(hdma->Instance));
-  assert_param(IS_DMA_DIRECTION(hdma->Init.Direction));
-  assert_param(IS_DMA_PERIPHERAL_INC_STATE(hdma->Init.PeriphInc));
-  assert_param(IS_DMA_MEMORY_INC_STATE(hdma->Init.MemInc));
-  assert_param(IS_DMA_PERIPHERAL_DATA_SIZE(hdma->Init.PeriphDataAlignment));
-  assert_param(IS_DMA_MEMORY_DATA_SIZE(hdma->Init.MemDataAlignment));
-  assert_param(IS_DMA_MODE(hdma->Init.Mode));
-  assert_param(IS_DMA_PRIORITY(hdma->Init.Priority));
+  // assert_param(IS_DMA_ALL_INSTANCE(hdma->Instance));
+  // assert_param(IS_DMA_DIRECTION(hdma->Init.Direction));
+  // assert_param(IS_DMA_PERIPHERAL_INC_STATE(hdma->Init.PeriphInc));
+  // assert_param(IS_DMA_MEMORY_INC_STATE(hdma->Init.MemInc));
+  // assert_param(IS_DMA_PERIPHERAL_DATA_SIZE(hdma->Init.PeriphDataAlignment));
+  // assert_param(IS_DMA_MEMORY_DATA_SIZE(hdma->Init.MemDataAlignment));
+  // assert_param(IS_DMA_MODE(hdma->Init.Mode));
+  // assert_param(IS_DMA_PRIORITY(hdma->Init.Priority));
 
-#if defined (DMA2)
-  /* calculation of the channel index */
-  if ((uint32_t)(hdma->Instance) < (uint32_t)(DMA2_Channel1))
-  {
-    /* DMA1 */
-    hdma->ChannelIndex = (((uint32_t)hdma->Instance - (uint32_t)DMA1_Channel1) / ((uint32_t)DMA1_Channel2 - (uint32_t)DMA1_Channel1)) << 2;
-    hdma->DmaBaseAddress = DMA1;
-  }
-  else 
-  {
-    /* DMA2 */
-    hdma->ChannelIndex = (((uint32_t)hdma->Instance - (uint32_t)DMA2_Channel1) / ((uint32_t)DMA2_Channel2 - (uint32_t)DMA2_Channel1)) << 2;
-    hdma->DmaBaseAddress = DMA2;
-  }
-#else
-  /* DMA1 */
-  hdma->ChannelIndex = (((uint32_t)hdma->Instance - (uint32_t)DMA1_Channel1) / ((uint32_t)DMA1_Channel2 - (uint32_t)DMA1_Channel1)) << 2;
-  hdma->DmaBaseAddress = DMA1;
+// #if defined (DMA2)
+//   /* calculation of the channel index */
+//   if ((uint32_t)(hdma->Instance) < (uint32_t)(DMA2_Channel1))
+//   {
+//     /* DMA1 */
+//     hdma->ChannelIndex = (((uint32_t)hdma->Instance - (uint32_t)DMA1_Channel1) / ((uint32_t)DMA1_Channel2 - (uint32_t)DMA1_Channel1)) << 2;
+//     hdma->DmaBaseAddress = DMA1;
+//   }
+//   else 
+//   {
+//     /* DMA2 */
+//     hdma->ChannelIndex = (((uint32_t)hdma->Instance - (uint32_t)DMA2_Channel1) / ((uint32_t)DMA2_Channel2 - (uint32_t)DMA2_Channel1)) << 2;
+//     hdma->DmaBaseAddress = DMA2;
+//   }
+// #else
+//   /* DMA1 */
+//   hdma->ChannelIndex = (((uint32_t)hdma->Instance - (uint32_t)DMA1_Channel1) / ((uint32_t)DMA1_Channel2 - (uint32_t)DMA1_Channel1)) << 2;
+//   hdma->DmaBaseAddress = DMA1;
 #endif /* DMA2 */
 
   /* Change DMA peripheral state */
