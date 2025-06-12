@@ -14,8 +14,8 @@
 
 
 #include "button.h"
-#define NO_OF_BUTTONS						4
-#define DURATION_FOR_AUTO_INCREASING		100
+#define NO_OF_BUTTONS						5
+#define DURATION_FOR_AUTO_INCREASING		200
 #define PRESSED_STATE						GPIO_PIN_RESET
 #define NORMAL_STATE						GPIO_PIN_SET
 
@@ -37,10 +37,10 @@ GPIO_PinState iKeyInput(int index){
 		return HAL_GPIO_ReadPin(Button_Pedes_GPIO_Port, Button_Pedes_Pin);
 	case 1:  // Button 1
 		return HAL_GPIO_ReadPin(Button1_GPIO_Port,Button1_Pin);
-	case 2:  // Button 2
-		return HAL_GPIO_ReadPin(Button2_GPIO_Port,Button2_Pin);
-	case 3:  // Button 3
-		return HAL_GPIO_ReadPin(Button3_GPIO_Port, Button3_Pin);
+	// case 2:  // Button 2
+	// 	return HAL_GPIO_ReadPin(Button2_GPIO_Port,Button2_Pin);
+	// case 3:  // Button 3
+	// 	return HAL_GPIO_ReadPin(Button3_GPIO_Port, Button3_Pin);
 	default:
 		return NORMAL_STATE;
 	}
@@ -54,6 +54,7 @@ void subKeyProcess2(int index){
 	flagForButtonPressed1s[index] = 1;
 }
 
+/* Button process */
 void getKeyInput(){
 	for(int i = 0; i < NO_OF_BUTTONS; ++i){
 		debounceButtonBuffer2[i] = debounceButtonBuffer1[i];
@@ -69,14 +70,14 @@ void getKeyInput(){
 					subKeyProcess1(i);
 					counterForButtonPressed1s[i] = DURATION_FOR_AUTO_INCREASING;
 				}
-			}else{
-				counterForButtonPressed1s[i]--;
-				if(counterForButtonPressed1s[i] <= 0){
-					if(debounceButtonBuffer2[i]==PRESSED_STATE){
-						subKeyProcess2(i);
-					}
-				counterForButtonPressed1s[i] = DURATION_FOR_AUTO_INCREASING;
-				}
+			// }else{
+			// 	counterForButtonPressed1s[i]--;
+			// 	if(counterForButtonPressed1s[i] <= 0){
+			// 		if(debounceButtonBuffer2[i]==PRESSED_STATE){
+			// 			subKeyProcess2(i);
+			// 		}
+			// 	counterForButtonPressed1s[i] = DURATION_FOR_AUTO_INCREASING;
+			// 	}
 			}
 		}
 	}
