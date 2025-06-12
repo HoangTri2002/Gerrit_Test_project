@@ -14,8 +14,8 @@
 
 
 #include "button.h"
-#define NO_OF_BUTTONS						4
-#define DURATION_FOR_AUTO_INCREASING		100
+#define NO_OF_BUTTONS						5
+#define DURATION_FOR_AUTO_INCREASING		200
 #define PRESSED_STATE						GPIO_PIN_RESET
 #define NORMAL_STATE						GPIO_PIN_SET
 
@@ -54,6 +54,7 @@ void subKeyProcess2(int index){
 	flagForButtonPressed1s[index] = 1;
 }
 
+/* Button process */
 void getKeyInput(){
 	for(int i = 0; i < NO_OF_BUTTONS; ++i){
 		debounceButtonBuffer2[i] = debounceButtonBuffer1[i];
